@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Секундомер, управляемый голосом</title>
+		<!-- <link rel="manifest" href="manifest.webapp"> -->
+		<link rel="stylesheet" href="./voice/style.css">
+		<link rel="icon" type="image/svg+xml" href="./voice/favicon.svg">		
+	</head>
+	<body>	
+		<div class="head_but">
+			<div class="parent" onclick="speech()">
+				<button id="speech_on_off" class="buttons">&#127908</button>
+				<div id="speech_on_off_child" style="display:initial"></div>
+			</div>
+			<button id="settings" class="buttons" onclick="show_menu(this)">&#8801</button>			
+		</div>
+		<div class="device_but">
+			<button id="button_timer" class="buttons" onclick="change_device(this)">&#9203</button>
+			<button id="button_sec" class="buttons" onclick="change_device(this)">&#9201</button>
+			<!-- <button onclick="to_voice()">Проговорить</button> -->
+		</div>	
+		
+		<div id="main_menu" style="display:none">				
+		<label class="m_m_child m_m_value" for="rate"><span id="turtle">&#128034</span><span id="value_rate">1</span><span id="rocket">&#128640</span></label>
+			<input class="m_m_child" onchange="change_value(this)" type="range" id="rate" value="1" min="0.2" max="3" step="0.2"/>
+			<label class="m_m_child m_m_value" for="pitch"><span id="drum">&#127928</span><span id="value_pitch">1</span><span id="violin">&#127931</span></label>
+			<input class="m_m_child" onchange="change_value(this)" type="range" id="pitch" value="1" min="0.2" max="2" step="0.2"/>
+			<label class="m_m_child" for="voices"> </label>
+			<select class="m_m_child" onchange="change_value(this)" id="voices"></select>	
+			<button class="buttons m_m_button" id="inf" onclick="show_menu(this)">?</button>	
+			<div id="text_info" style="display:none">
+				<div>
+					<img id="flag_ru" onclick="show_menu(this)" src="./voice/ru.png" alt="Инструкция на русском языке">
+					<img id="flag_en" onclick="show_menu(this)" src="./voice/en.png" alt="Instruction in English">									
+				</div>
+				<div id="text_ru" style="display:initial">
+					<p class="headline">Управление голосом</p>
+					<p>Включите микрофон, нажав на иконку микрофона</p>
+					<p>Произносите слова:</p>
+					<p>Включить Таймер - скажите "Timer"</p>
+					<p>Включить Секундомер - скажите "Секундомер"</p>
+					<p>Для старта - скажите "Старт Го Гоу Гугл Продолжить"</p>
+					<p>Для паузы - скажите "Стоп Пауза Финиш"</p>
+					<p>Для сброса - скажите "Сбросить Очистить"</p>
+					<p>Чтобы запомнить время круга или раунда - скажите "Круг Подход Цикл Раунд"</p>
+					<p>Чтобы отключить микрофон - скажите "Выключить"</p>
+				</div>
+				<div id="text_en" style="display:none">
+					<p class="headline">Voice control</p>
+					<p>Turn on the microphone by clicking on the microphone</p>
+					<p>Pronounce words:</p>
+					<p>Enable Timer - say "Timer"</p>
+					<p>Enable Stopwatch - say "Stopwatch"</p>
+					<p>To start - say "Start Go Google Continue"</p>
+					<p>To pause - say "Stop Pause Stop Pause Finish"</p>
+					<p>To reset - say "Reset Clear Drop Reset" </p>
+					<p>To memorize lap or round times - say "Lap Round Circle"</p>
+					<p>To mute the microphone - say "Speech off Switch off"</p>
+				</div>
+				</div>	
+			</div>	
+			
+			<div id="div_rezult"><div id="rezult">00:00:00:00</div></div>
+			
+			<script src="./socket.io/socket.io.js"></script>	
+			<script src="./voice/voice_recognition.js"></script>
+			<script src="./voice/stopwatch.js"></script>
+			<script src="./voice/voice_timer.js"></script>			
+		</body>
+	</html>																																																					
