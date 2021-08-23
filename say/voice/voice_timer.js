@@ -13,7 +13,7 @@ function startTimer(){console.log(start_timer.textContent.charCodeAt())
 
 function ClearTimer(){start_timer.textContent=String.fromCharCode(9654);if(count_timer){clearTimeout(count_timer)};pause_t=0;pause_diff=0;rez.textContent='00:00:00:00'} 
 
-function soundClick(){let audio = new Audio('./voice/signal.wav'); audio.autoplay = true}
+function soundClick(){let audio = new Audio('./say/voice/signal.wav'); audio.autoplay = true}
 
 const device_t=`<div id="device_time" class="device_but">
 <button class="buttons control_but" id="reset_timer" onclick="ClearTimer()">&#10060;</button>
